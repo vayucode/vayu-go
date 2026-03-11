@@ -12,8 +12,11 @@ type Vayu struct {
 	Events    *api.EventsAPI
 	Invoices  *api.InvoicesAPI
 	Meters    *api.MetersAPI
-	Plans     *api.PlansAPI
-	Webhooks  *api.WebhooksAPI
+	Plans        *api.PlansAPI
+	Webhooks     *api.WebhooksAPI
+	Credits      *api.CreditsAPI
+	Integrations *api.IntegrationsAPI
+	Reports      *api.ReportsAPI
 }
 
 func NewVayu(APIKey string) *Vayu {
@@ -26,7 +29,10 @@ func NewVayu(APIKey string) *Vayu {
 		Invoices:  api.NewInvoicesAPI(vayuClient),
 		Meters:    api.NewMetersAPI(vayuClient),
 		Plans:     api.NewPlansAPI(vayuClient),
-		Webhooks:  api.NewWebhooksAPI(vayuClient),
+		Webhooks:     api.NewWebhooksAPI(vayuClient),
+		Credits:      api.NewCreditsAPI(vayuClient),
+		Integrations: api.NewIntegrationsAPI(vayuClient),
+		Reports:      api.NewReportsAPI(vayuClient),
 	}
 }
 
@@ -97,4 +103,27 @@ type (
 	ListPlansResponse  = api.ListPlansResponse
 	GetPlanResponse    = api.GetPlanResponse
 	DeletePlanResponse = api.DeletePlanResponse
+)
+
+type (
+	DeductCreditsRequest            = api.DeductCreditsRequest
+	GrantCreditsRequest             = api.GrantCreditsRequest
+	ListCreditLedgerEntriesResponse = api.ListCreditLedgerEntriesResponse
+)
+
+type (
+	UpdateMeterRequest  = api.UpdateMeterRequest
+	UpdateMeterResponse = api.UpdateMeterResponse
+	DeleteMeterResponse = api.DeleteMeterResponse
+)
+
+type (
+	NetSuiteExportSalesOrderRequest = api.NetSuiteExportSalesOrderRequest
+	NetSuiteSyncInvoicesRequest     = api.NetSuiteSyncInvoicesRequest
+	NetSuiteSyncInvoicesResponse    = api.NetSuiteSyncInvoicesResponse
+)
+
+type (
+	GetCommitmentReportResponse    = api.GetCommitmentReportResponse
+	GetProductsUsageReportResponse = api.GetProductsUsageReportResponse
 )
