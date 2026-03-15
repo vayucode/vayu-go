@@ -1,8 +1,6 @@
 package VayuSDK
 
 import (
-	"fmt"
-
 	"github.com/weft-finance/vayu-go/api"
 	"github.com/weft-finance/vayu-go/client"
 )
@@ -36,18 +34,13 @@ func (v *Vayu) SetCustomHost(host string) {
 	v.client.SetCustomHost(host)
 }
 
+// Deprecated: Authentication is now handled automatically. You can remove this call.
 func (v *Vayu) Login() error {
 	return v.client.Login()
 }
 
 func (v *Vayu) IsLoggedIn() bool {
-	loggedIn := v.client.IsLoggedIn()
-
-	if !loggedIn {
-		fmt.Println("vayu client is not logged in. please call `vayu.login()` before calling this method'")
-	}
-
-	return loggedIn
+	return v.client.IsLoggedIn()
 }
 
 // Types
